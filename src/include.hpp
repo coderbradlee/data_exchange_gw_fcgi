@@ -35,6 +35,15 @@
 #include "mysql/mysql_api.hpp"
 #include <boost/date_time/gregorian/gregorian.hpp>   
 #include <boost/any.hpp>
+#include <regex>
+#include <unordered_map>
+#include <thread>
+#include <functional>
+#include <memory>
+
+#include <boost/asio.hpp>
+#include <boost/asio/spawn.hpp>
+#include <boost/asio/ssl.hpp>
 #define BOOST_DATE_TIME_SOURCE  
 #endif
 

@@ -1,14 +1,8 @@
 #ifndef SERVER_HTTP_HPP
 #define	SERVER_HTTP_HPP
-
-#include <boost/asio.hpp>
-#include <boost/asio/spawn.hpp>
+#include "include.hpp"
 #include "renesolalog.hpp"
-#include <regex>
-#include <unordered_map>
-#include <thread>
-#include <functional>
-#include <memory>
+
 
 using boost::shared_ptr;
 namespace SimpleWeb 

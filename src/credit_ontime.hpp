@@ -3,6 +3,10 @@
 
 #include "include.hpp"
 //#define DEBUG
-
+class credit_ontime
+{
+public:
+	
+};
 #endif
 
