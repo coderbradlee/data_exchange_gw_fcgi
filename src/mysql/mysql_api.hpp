@@ -1,3 +1,6 @@
+#ifndef MYSQL_API_HPP
+#define MYSQL_API_HPP
+
 #include "MySql.hpp"
 #include "MySqlException.hpp"
 
@@ -206,3 +209,4 @@ ostream& operator<<(ostream& out, const unique_ptr<T>& ptr) {
     }
     return out;
 }
+#endif
