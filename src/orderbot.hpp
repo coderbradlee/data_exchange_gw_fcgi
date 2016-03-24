@@ -58,7 +58,11 @@ protected:
 			//cout << __LINE__ << endl;
 			m_data.clear();
 			m_data.append(buffer, size*nmemb);
+			cout<<"m_data:"<<m_data.size()<<endl;
 			result = size*nmemb;
+			// boost::asio::streambuf write_buffer;
+   //          std::ostream response(&write_buffer);
+   //          response << stream.rdbuf();
 		}
 		/*cout <<__LINE__<<":"<<  buffer << endl;*/
 		//cout << __LINE__ << ":" << m_data << endl;
