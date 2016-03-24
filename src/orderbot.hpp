@@ -19,6 +19,7 @@ public:
 		curl_easy_setopt(m_curl, CURLOPT_VERBOSE, 1);
 #endif
 		//curl(m_download_url, "GET", filename, true);
+		curl_easy_setopt(m_curl, CURLOPT_PROGRESSFUNCTION, progress_callback);
 		//curl_easy_setopt(m_curl, CURLOPT_PROGRESSFUNCTION, progress_callback);
 		curl_easy_setopt(m_curl, CURLOPT_PROGRESSDATA,this);
 		curl_easy_setopt(m_curl, CURLOPT_NOPROGRESS,0);
