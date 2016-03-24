@@ -17,7 +17,8 @@ int main() {
 	try
 	{
 		//read config.ini
-			
+			credit_ontime test;
+			test.start();
 		{
 			boost::timer::cpu_timer pass;
 			pass.start();

@@ -58,9 +58,9 @@ protected:
 			//cout << __LINE__ << endl;
 			//m_data.clear();
 			m_data.append(buffer, size*nmemb);
-			cout<<"m_data:"<<m_data.size()<<endl;
-			cout<<"max_size:"<<m_data.max_size() <<endl;
-			cout<<"capacity:"<<m_data.capacity()<<endl;
+			// cout<<"m_data:"<<m_data.size()<<endl;
+			// cout<<"max_size:"<<m_data.max_size() <<endl;
+			// cout<<"capacity:"<<m_data.capacity()<<endl;
 			result = size*nmemb;
 			// boost::asio::streambuf write_buffer;
    //          std::ostream response(&write_buffer);
