@@ -9,21 +9,21 @@
 //#define DEBUG
 #include "serverResource.hpp"
 #include "renesolalog.hpp"
-class config:public boost::enable_shared_from_this<config>, boost::noncopyable
+class iconfig:public boost::enable_shared_from_this<iconfig>, boost::noncopyable
 {
 	public:
-		static boost::shared_ptr<config> get_instance(const std::string& filename)
+		static boost::shared_ptr<iconfig> get_instance(const std::string& filename)
 		{
 			boost::mutex::scoped_lock t(m_mu);
 			if (m_ps == nullptr)
 			{
-				m_ps = boost::shared_ptr<config>(new config(filename));
+				m_ps = boost::shared_ptr<iconfig>(new iconfig(filename));
 			}
 			
 			return m_ps;
 		}
 	private:
-		config(const std::string& filename)
+		iconfig(const std::string& filename)
 		{			
 			boost::property_tree::ini_parser::read_ini(filename, m_pt);
 			m_ip = m_pt.get<std::string>("mysql.ip");
@@ -52,7 +52,7 @@ class config:public boost::enable_shared_from_this<config>, boost::noncopyable
 		string m_orderbot_password;
 		string m_orderbot_url;	
 		static boost::mutex m_mu;	
-		static boost::shared_ptr<config> m_ps;
+		static boost::shared_ptr<iconfig> m_ps;
 };
 
 
