@@ -22,7 +22,7 @@ int main() {
 			try
 			{
 
-				MySql conn(get_config->ip.c_str(), get_config->username.c_str(), get_config->password.c_str(), get_config->database.c_str(), get_config->port);
+				MySql conn(get_config->m_ip.c_str(), get_config->m_username.c_str(), get_config->m_password.c_str(), get_config->m_database.c_str(), get_config->m_port);
 
 				//`customer_credit_flow_id` char(20) NOT NULL COMMENT ' /*Ö÷¼ü*/',
 				//`company_id` char(20) NOT NULL COMMENT ' /*¹«Ë¾id*/',
@@ -84,7 +84,7 @@ int main() {
 				
 				//typedef tuple<string,double> credit_tuple;
 				vector<credit_tuple> credits;
-				string query_sql = "SELECT customer_credit_flow_id,balance,customer_master_id FROM " + database + "." + table + " where expire_date='" + str1 + "' and balance>0 and dr=0 and transaction_type=0";
+				string query_sql = "SELECT customer_credit_flow_id,balance,customer_master_id FROM " + get_config->m_database + "." + get_config->m_table + " where expire_date='" + str1 + "' and balance>0 and dr=0 and transaction_type=0";
 				cout << query_sql << endl;
 				conn.runQuery(&credits, query_sql.c_str());
 
@@ -102,14 +102,14 @@ int main() {
 					//unique_ptr<string> data=std::move((std::get<0>(item)));
 					
 					//UPDATE ±íÃû³Æ SET ÁÐÃû³Æ = ÐÂÖµ WHERE ÁÐÃû³Æ = Ä³Öµ
-					string update_sql = "update " + get_config->database + "." + get_config->table + " set balance=0 where customer_credit_flow_id='" + *(std::get<0>(item))+"'";
+					string update_sql = "update " + get_config->m_database + "." + get_config->m_table + " set balance=0 where customer_credit_flow_id='" + *(std::get<0>(item))+"'";
 					cout << update_sql << endl;
 					string update_sql2;
 					try
 					{
 						conn.runCommand(update_sql.c_str());
 						//¸üÐÂÁíÒ»¸ö±í
-						update_sql2 = "update " + get_config->database + "." + get_config->get_config->table2 + " set credit_balance=0 where customer_master_id='" + *(std::get<2>(item))+"'";
+						update_sql2 = "update " + get_config->m_database + "." + get_config->m_table2 + " set credit_balance=0 where customer_master_id='" + *(std::get<2>(item))+"'";
 						cout << update_sql2 << endl;
 						conn.runCommand(update_sql2.c_str());
 						
