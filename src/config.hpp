@@ -8,6 +8,7 @@
 #include <map>
 //#define DEBUG
 #include "serverResource.hpp"
+#include "renesolalog.hpp"
 class config:public boost::enable_shared_from_this<config>, boost::noncopyable
 {
 	public:
