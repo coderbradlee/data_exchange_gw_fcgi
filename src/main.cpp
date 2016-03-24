@@ -1,3 +1,4 @@
+#include "config.hpp"
 #include "serverResource.hpp"
 #include <boost/asio/yield.hpp>
 #include <boost/asio/coroutine.hpp>
@@ -14,27 +15,14 @@ int main() {
 	try
 	{
 		//read config.ini
-		boost::property_tree::ptree pt;
-		boost::property_tree::ini_parser::read_ini("config.ini", pt);
-
-		string ip = pt.get<std::string>("mysql.ip");
-		unsigned short port = boost::lexical_cast<unsigned short>(pt.get<std::string>("mysql.port"));
-		string username = pt.get<std::string>("mysql.username");
-		string password = pt.get<std::string>("mysql.password");
-		string database = pt.get<std::string>("mysql.database");
-		string table = pt.get<std::string>("mysql.table");
-		string table2 = pt.get<std::string>("mysql.table2");
-		size_t threads = boost::lexical_cast<size_t>(pt.get<std::string>("webserver.threads"));
-		string orderbot_username = pt.get<std::string>("orderbot.username");
-		string orderbot_password = pt.get<std::string>("orderbot.password");
-		string orderbot_url = pt.get<std::string>("orderbot.url");		
+			
 		{
 			boost::timer::cpu_timer pass;
 			pass.start();
 			try
 			{
 
-				MySql conn(ip.c_str(), username.c_str(), password.c_str(), database.c_str(), port);
+				MySql conn(get_config->ip.c_str(), get_config->username.c_str(), get_config->password.c_str(), get_config->database.c_str(), get_config->port);
 
 				//`customer_credit_flow_id` char(20) NOT NULL COMMENT ' /*Ö÷¼ü*/',
 				//`company_id` char(20) NOT NULL COMMENT ' /*¹«Ë¾id*/',
@@ -114,14 +102,14 @@ int main() {
 					//unique_ptr<string> data=std::move((std::get<0>(item)));
 					
 					//UPDATE ±íÃû³Æ SET ÁÐÃû³Æ = ÐÂÖµ WHERE ÁÐÃû³Æ = Ä³Öµ
-					string update_sql = "update " + database + "." + table + " set balance=0 where customer_credit_flow_id='" + *(std::get<0>(item))+"'";
+					string update_sql = "update " + get_config->database + "." + get_config->table + " set balance=0 where customer_credit_flow_id='" + *(std::get<0>(item))+"'";
 					cout << update_sql << endl;
 					string update_sql2;
 					try
 					{
 						conn.runCommand(update_sql.c_str());
 						//¸üÐÂÁíÒ»¸ö±í
-						update_sql2 = "update " + database + "." + table2 + " set credit_balance=0 where customer_master_id='" + *(std::get<2>(item))+"'";
+						update_sql2 = "update " + get_config->database + "." + get_config->get_config->table2 + " set credit_balance=0 where customer_master_id='" + *(std::get<2>(item))+"'";
 						cout << update_sql2 << endl;
 						conn.runCommand(update_sql2.c_str());
 						
