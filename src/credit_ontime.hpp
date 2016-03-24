@@ -62,7 +62,13 @@ public:
 	// }
 
 	// credits.clear();
-
+			// catch (const MySqlException& e) 
+			// {
+			// 	cout << e.what() << endl;
+			// 	BOOST_LOG_SEV(slg, severity_level::error)<<"query_sql(exception:)" << e.what();
+			// 	boost_log->get_initsink()->flush();
+				
+			// }
 
 };
 #endif

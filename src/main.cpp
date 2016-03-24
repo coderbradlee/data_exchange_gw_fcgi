@@ -21,26 +21,14 @@ int main() {
 		{
 			boost::timer::cpu_timer pass;
 			pass.start();
-			try
-			{
 
+			//orderbot 接口
+			boost::shared_ptr<orderbot> order=boost::shared_ptr<orderbot>(new orderbot(get_config->m_orderbot_username,get_config->m_orderbot_password,get_config->m_orderbot_url));
+			order->request("GET","/admin/products.json/","class_type=sales&category_name=Rings","");
+
+			cout<<order->get_data()<<endl;
 				
-				//orderbot 接口
-				boost::shared_ptr<orderbot> order=boost::shared_ptr<orderbot>(new orderbot(get_config->m_orderbot_username,get_config->m_orderbot_password,get_config->m_orderbot_url));
-				order->request("GET","/admin/products.json/","class_type=sales&category_name=Rings","");
-
-				cout<<order->get_data()<<endl;
-				
-
-
-			}
-			catch (const MySqlException& e) 
-			{
-				cout << e.what() << endl;
-				BOOST_LOG_SEV(slg, severity_level::error)<<"query_sql(exception:)" << e.what();
-				boost_log->get_initsink()->flush();
-				
-			}
+			
 	//
 	//    // Initialize a new test database
 	//    conn.runCommand("DROP DATABASE IF EXISTS test_mysql_cpp");
