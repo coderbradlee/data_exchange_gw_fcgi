@@ -25,17 +25,17 @@ class config:public boost::enable_shared_from_this<config>, boost::noncopyable
 		config(const std::string& filename)
 		{			
 			boost::property_tree::ini_parser::read_ini(filename, m_pt);
-			m_ip = pt.get<std::string>("mysql.ip");
-			m_port = boost::lexical_cast<unsigned short>(pt.get<std::string>("mysql.port"));
-			m_username = pt.get<std::string>("mysql.username");
+			m_ip = m_pt.get<std::string>("mysql.ip");
+			m_port = boost::lexical_cast<unsigned short>(m_pt.get<std::string>("mysql.port"));
+			m_username = m_pt.get<std::string>("mysql.username");
 			m_password = pt.get<std::string>("mysql.password");
 			m_database = pt.get<std::string>("mysql.database");
 			m_table = pt.get<std::string>("mysql.table");
-			m_table2 = pt.get<std::string>("mysql.table2");
-			m_threads = boost::lexical_cast<size_t>(pt.get<std::string>("webserver.threads"));
-			m_orderbot_username = pt.get<std::string>("orderbot.username");
-			m_orderbot_password = pt.get<std::string>("orderbot.password");
-			m_orderbot_url = pt.get<std::string>("orderbot.url");	
+			m_table2 = m_pt.get<std::string>("mysql.table2");
+			m_threads = boost::lexical_cast<size_t>(m_pt.get<std::string>("webserver.threads"));
+			m_orderbot_username = m_pt.get<std::string>("orderbot.username");
+			m_orderbot_password = m_pt.get<std::string>("orderbot.password");
+			m_orderbot_url = m_pt.get<std::string>("orderbot.url");	
 		}
 	public:
 		boost::property_tree::ptree m_pt;
