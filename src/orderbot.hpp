@@ -1,11 +1,7 @@
 #ifndef ORDERBOT_HPP
 #define	ORDERBOT_HPP
 
-#include <curl/curl.h>
-#include <string.h>
-#include <cstdarg>
-#include <iostream>
-#include <map>
+#include  "include.hpp"
 //#define DEBUG
 #include "serverResource.hpp"
 
