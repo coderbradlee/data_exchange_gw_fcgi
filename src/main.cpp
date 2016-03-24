@@ -17,9 +17,14 @@ using namespace std;
 int main() {
 	try
 	{
-		//read config.ini
+		{
+			boost::timer::cpu_timer pass;
+			pass.start();
 			credit_ontime test;
 			test.start();
+			
+			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
+		}
 		{
 			boost::timer::cpu_timer pass;
 			pass.start();
