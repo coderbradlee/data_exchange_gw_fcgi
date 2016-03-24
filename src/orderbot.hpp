@@ -3,8 +3,6 @@
 
 #include  "include.hpp"
 //#define DEBUG
-#include "serverResource.hpp"
-
 
 class orderbot
 {
