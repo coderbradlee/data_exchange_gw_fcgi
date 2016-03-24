@@ -31,7 +31,7 @@
 #include <boost/asio/yield.hpp>
 #include <boost/asio/coroutine.hpp>
 
-#include "mysql/mysql_api.hpp"
+//#include "mysql/mysql_api.hpp"
 #include <boost/date_time/gregorian/gregorian.hpp>   
 #include <boost/any.hpp>
 #include <regex>
