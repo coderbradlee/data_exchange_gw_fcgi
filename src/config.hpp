@@ -54,7 +54,8 @@ class iconfig:public boost::enable_shared_from_this<iconfig>, boost::noncopyable
 		static boost::mutex m_mu;	
 		static boost::shared_ptr<iconfig> m_ps;
 };
-
-
+boost::shared_ptr<iconfig> iconfig::m_ps = nullptr;
+boost::mutex iconfig::m_mu;
+boost::shared_ptr<iconfig> get_config = iconfig::get_instance("config.ini");
 #endif
 

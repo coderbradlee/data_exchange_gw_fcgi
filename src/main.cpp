@@ -15,7 +15,7 @@ int main() {
 	try
 	{
 		//read config.ini
-		boost::shared_ptr<iconfig> get_config = iconfig::get_instance("config.ini");	
+			
 		{
 			boost::timer::cpu_timer pass;
 			pass.start();
