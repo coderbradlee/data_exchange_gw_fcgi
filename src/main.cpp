@@ -21,7 +21,7 @@ int main() {
 			boost::timer::cpu_timer pass;
 			pass.start();
 			credit_ontime test;
-			test.start();
+			test.start_update();
 			
 			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
 		}
