@@ -56,7 +56,7 @@ protected:
 		if (buffer != 0)
 		{
 			//cout << __LINE__ << endl;
-			m_data.clear();
+			//m_data.clear();
 			m_data.append(buffer, size*nmemb);
 			cout<<"m_data:"<<m_data.size()<<endl;
 			result = size*nmemb;
