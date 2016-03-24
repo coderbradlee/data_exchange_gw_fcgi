@@ -1,6 +1,8 @@
 #ifndef SERVER_HTTP_HPP
 #define	SERVER_HTTP_HPP
 #include "include.hpp"
+#include <boost/asio.hpp>
+#include <boost/asio/spawn.hpp>
 #include "renesolalog.hpp"
 
 
