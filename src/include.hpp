@@ -6,7 +6,6 @@
 #include <cstdarg>
 #include <iostream>
 #include <map>
-#include "renesolalog.hpp"
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <iostream>
 #include <boost/regex.hpp>
