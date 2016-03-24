@@ -13,7 +13,7 @@ public:
 		
 		m_today_string=to_iso_extended_string(boost::gregorian::day_clock::local_day());
 	}
-	void start()
+	void start_update()
 	{
 		try
 		{
