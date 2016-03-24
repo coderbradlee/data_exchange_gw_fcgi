@@ -1,9 +1,29 @@
 #ifndef SERVER_RESOURCE_HPP
 #define	SERVER_RESOURCE_HPP
 #define BOOST_SPIRIT_THREADSAFE
-#include "include.hpp"
+#include <boost/regex.hpp>
 #include "renesolalog.hpp"
-
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include <iostream>
+#include <boost/bind.hpp>
+#include <list>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/ini_parser.hpp>
+#include <boost/lexical_cast.hpp>
+#include <condition_variable>
+#include <assert.h>
+#include <boost/thread.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/timer/timer.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/archive/iterators/base64_from_binary.hpp>  
+#include <boost/archive/iterators/binary_from_base64.hpp>  
+#include <boost/archive/iterators/transform_width.hpp>
+//Added for the default_resource example
+#include<fstream>
 using namespace std;
 //Added for the json:
 using namespace boost::property_tree;
