@@ -11,7 +11,7 @@ public:
 	{
 		m_conn=boost::shared_ptr<MySql>(new MySql(get_config->m_ip.c_str(), get_config->m_username.c_str(), get_config->m_password.c_str(), get_config->m_database.c_str(), get_config->m_port));
 		
-		m_today_string=to_iso_extended_string(boost::gregorian::day_clock::local_day()));
+		m_today_string=to_iso_extended_string(boost::gregorian::day_clock::local_day());
 	}
 	void start()
 	{
@@ -22,7 +22,7 @@ public:
 	vector<credit_tuple> credits;
 	string query_sql = "SELECT customer_credit_flow_id,balance,customer_master_id FROM " + get_config->m_database + "." + get_config->m_table + " where expire_date='" + m_today_string + "' and balance>0 and dr=0 and transaction_type=0";
 	cout << query_sql << endl;
-	m_conn.runQuery(&credits, query_sql.c_str());
+	m_conn->runQuery(&credits, query_sql.c_str());
 
 	BOOST_LOG_SEV(slg, boost_log->get_log_level()) << query_sql;
 	boost_log->get_initsink()->flush();
@@ -39,11 +39,11 @@ public:
 		string update_sql2;
 		try
 		{
-			m_conn.runCommand(update_sql.c_str());
+			m_conn->runCommand(update_sql.c_str());
 			//¸üÐÂÁíÒ»¸ö±í
 			update_sql2 = "update " + get_config->m_database + "." + get_config->m_table2 + " set credit_balance=0 where customer_master_id='" + *(std::get<2>(item))+"'";
 			cout << update_sql2 << endl;
-			m_conn.runCommand(update_sql2.c_str());
+			m_conn->runCommand(update_sql2.c_str());
 			
 			BOOST_LOG_SEV(slg, boost_log->get_log_level()) << update_sql;
 			BOOST_LOG_SEV(slg, boost_log->get_log_level()) << update_sql2;
