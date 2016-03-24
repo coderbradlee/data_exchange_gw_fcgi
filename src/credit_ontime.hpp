@@ -30,7 +30,12 @@ public:
 			/********************************/
 			cout.setf(ios::showpoint); cout.setf(ios::fixed); cout.precision(8);
 			/********************************/
-
+			if(credits.empty())
+			{
+				BOOST_LOG_SEV(slg, boost_log->get_log_level()) << "nothing need to update";
+				boost_log->get_initsink()->flush();
+				cout<<"nothing need to update"<<endl;
+			}
 			for (const auto& item : credits)
 			{
 				cout << item << endl;
