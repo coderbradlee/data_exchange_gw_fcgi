@@ -33,7 +33,7 @@ int main() {
 			boost::shared_ptr<orderbot> order=boost::shared_ptr<orderbot>(new orderbot(get_config->m_orderbot_username,get_config->m_orderbot_password,get_config->m_orderbot_url));
 			order->request("GET","/admin/products.json/","class_type=sales&category_name=Rings","");
 
-			cout<<order->get_data().length()<<":"<<order->get_data()<<endl;
+			//cout<<order->get_data().length()<<":"<<order->get_data()<<endl;
 				
 		
 			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
