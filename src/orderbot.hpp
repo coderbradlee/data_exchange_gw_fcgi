@@ -176,11 +176,11 @@ protected:
 
 					ptree pChild = pt.get_child("inventory_quantities");
 					
-					for (auto &p:pChild)
+					for (auto it = pChild.begin(); it != pChild.end(); ++it)
 					{
-						cout<<p.get<int>("distribution_center_id")<<endl;
-						cout<<p.get<string>("distribution_center_name")<<endl;
-						cout<<p.get<int>("inventory_quantity")<<endl;
+						cout<<it->get<int>("distribution_center_id")<<endl;
+						cout<<it->get<string>("distribution_center_name")<<endl;
+						cout<<it->get<int>("inventory_quantity")<<endl;
 						
 					}
 					//cout<<m_data<<endl;
