@@ -38,7 +38,7 @@ public:
 	void request(const std::string& method,const std::string& path,const std::string& param,const std::string& content)
 	{
 		//find data parser callback
-		 for(auto& res: opt_resource) 
+		 for(auto& res: m_opt_resource) 
 			{
                 if(method==res.first) 
 				{
