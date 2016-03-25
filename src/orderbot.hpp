@@ -190,11 +190,11 @@ protected:
 				}
 				catch (json_parser_error& e)
 				{
-					
+					cout<<e.what()<<endl;
 				}
 				catch (exception& e)
 				{
-					
+					cout<<e.what()<<endl;
 				}
 				catch (...) 
 				{
