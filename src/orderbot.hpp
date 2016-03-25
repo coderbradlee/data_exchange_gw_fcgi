@@ -47,6 +47,10 @@ public:
                         std::smatch sm_res;
                         string temp=path+"?"+param;
                         cout<<temp<<endl;
+                        cout<<res.first<<endl;
+
+                        cout<<res_path.first<<endl;
+						cout<<res_path.second<<endl;
                         if(std::regex_match(temp, sm_res, res_path.first)) 
 						{
                            path_match=std::move(sm_res);
@@ -96,12 +100,8 @@ protected:
 			// cout<<"capacity:"<<m_data.capacity()<<endl;
 			result = size*nmemb;
 			// boost::asio::streambuf write_buffer;
-   //          std::ostream response(&write_buffer);
-   //          response << stream.rdbuf();
+
 		}
-		/*cout <<__LINE__<<":"<<  buffer << endl;*/
-		//cout << __LINE__ << ":" << m_data << endl;
-		
 		return result;
 	}
 
