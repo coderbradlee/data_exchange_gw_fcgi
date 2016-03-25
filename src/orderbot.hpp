@@ -7,8 +7,10 @@
 class orderbot
 {
 public:
-	orderbot(const std::string& user, const std::string& password,const std::string& url) :m_username(user),m_password(password),m_url(url)
+	orderbot(const std::string& user, const std::string& password,const std::string& url) :m_username(user),m_password(password),m_url(url),m_data_parse_callback(nullptr)
 	{
+		//register callback 
+		register_callback();
 		curl_global_init(CURL_GLOBAL_ALL);
 		m_curl = curl_easy_init();
 		curl_easy_setopt(m_curl, CURLOPT_FOLLOWLOCATION, 1);
@@ -35,6 +37,26 @@ public:
 	}
 	void request(const std::string& method,const std::string& path,const std::string& param,const std::string& content)
 	{
+		//find data parser callback
+		 for(auto& res: opt_resource) 
+			{
+                if(method==res.first) 
+				{
+                    for(auto& res_path: res.second) 
+					{
+                        std::smatch sm_res;
+                        if(std::regex_match(path+"?"+param, sm_res, res_path.first)) 
+						{
+                           // request->path_match=std::move(sm_res);
+                           // write_response(socket, request, res_path.second);
+							m_data_parse_callback=res_path.second;
+                           // return;
+                        }
+                    }
+                }
+            }
+            
+		
 		curl(path,method,param,content);
 	}
 	string get_data()
@@ -120,7 +142,68 @@ protected:
 	}
 	void process_content()
 	{
-		cout<<m_data<<endl;
+		//cout<<m_data<<endl;
+		//find right call back
+		if(m_data_parse_callback)
+		{
+			m_data_parse_callback();
+		}
+
+	}
+	void register_callback()
+	{
+		m_resource["^/admin/orders.json/[[:graph:]]+$"]["GET"] = [&]() 
+			{
+				try 
+				{
+					//parse m_data and update mysql
+					cout<<m_data<<endl;
+					string body = "test";
+					BOOST_LOG_SEV(slg, boost_log->get_log_level()) << __LINE__;
+					boost_log->get_initsink()->flush();
+
+				}
+				catch (json_parser_error& e)
+				{
+					
+				}
+				catch (exception& e)
+				{
+					
+				}
+				catch (...) 
+				{
+					
+				}
+			};
+			copy_opt();
+	}
+	void copy_opt()
+	{
+		//Copy the resources to opt_resource for more efficient request processing
+        m_opt_resource.clear();
+        for(auto& res: m_resource) 
+		{
+            for(auto& res_method: res.second) 
+			{
+                auto it=m_opt_resource.end();
+                for(auto opt_it=m_opt_resource.begin();opt_it!=m_opt_resource.end();opt_it++) 
+				{
+                    if(res_method.first==opt_it->first) 
+					{
+                        it=opt_it;
+                        break;
+                    }
+                }
+                if(it==m_opt_resource.end()) 
+				{
+                    m_opt_resource.emplace_back();
+                    it=m_opt_resource.begin()+(m_opt_resource.size()-1);
+                    it->first=res_method.first;
+                }
+                it->second.emplace_back(std::regex(res.first), res_method.second);
+            }
+        }
 	}
 protected:	
 	std::string m_data;
@@ -128,7 +211,12 @@ protected:
 	std::string m_url;
 	std::string m_username;
 	std::string m_password;
-	static CURLSH* share_handle;  
+	static CURLSH* share_handle; 
+	std::unordered_map<std::string, std::unordered_map<std::string, 
+            std::function<void()> > >  m_resource; 
+    std::vector<std::pair<std::string, std::vector<std::pair<std::regex, 
+    std::function<void()> > > > > m_opt_resource;
+    std::function<void()> m_data_parse_callback;
 };
 CURLSH* orderbot::share_handle = NULL;
 #endif
