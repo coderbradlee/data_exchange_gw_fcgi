@@ -177,16 +177,18 @@ protected:
 	         
 
 						ptree pChild = p->second.get_child("inventory_quantities");
-						cout<<"--------------------------"<<endl;
+						
 						for (auto it = pChild.begin(); it != pChild.end(); ++it)
 						{
+							cout<<"--------------------------"<<endl;
 							cout<<it->second.get<int>("distribution_center_id")<<endl;
 							cout<<it->second.get<string>("distribution_center_name")<<endl;
 							cout<<it->second.get<double>("inventory_quantity")<<endl;
-							
+							//cout<<"--------------------------"<<endl;
 						}
+						cout<<"=========================="<<endl;
 					}
-					cout<<"=========================="<<endl;
+					
 					//cout<<m_data<<endl;
 					BOOST_LOG_SEV(slg, boost_log->get_log_level()) << __LINE__;
 					boost_log->get_initsink()->flush();
