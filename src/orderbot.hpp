@@ -87,7 +87,7 @@ protected:
 		curl_easy_setopt(m_curl, CURLOPT_TCP_KEEPALIVE, 1L);
 		curl_easy_setopt(m_curl, CURLOPT_CUSTOMREQUEST, method.c_str());
 		
-		curl_easy_setopt(m_curl, CURLOPT_NOPROGRESS,0);
+		curl_easy_setopt(m_curl, CURLOPT_NOPROGRESS,0L);
 		curl_easy_setopt(m_curl, CURLOPT_PROGRESSFUNCTION, progress_callback);
 
 		curl_easy_setopt(m_curl, CURLOPT_PROGRESSDATA,this);
