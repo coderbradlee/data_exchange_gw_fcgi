@@ -46,9 +46,10 @@ public:
 					{
                         std::smatch sm_res;
                         string temp=path+"?"+param;
+                        cout<<temp<<endl;
                         if(std::regex_match(temp, sm_res, res_path.first)) 
 						{
-                           // request->path_match=std::move(sm_res);
+                           path_match=std::move(sm_res);
                            // write_response(socket, request, res_path.second);
 							cout<<__LINE__<<endl;
 							m_data_parse_callback=res_path.second;
@@ -144,11 +145,12 @@ protected:
 	}
 	void process_content()
 	{
-		cout<<__LINE__<<endl;
+
 		//cout<<m_data<<endl;
 		//find right call back
 		if(m_data_parse_callback)
 		{
+			cout<<__LINE__<<endl;
 			m_data_parse_callback();
 		}
 
@@ -220,6 +222,7 @@ protected:
     std::vector<std::pair<std::string, std::vector<std::pair<std::regex, 
     std::function<void()> > > > > m_opt_resource;
     std::function<void()> m_data_parse_callback;
+    std::smatch path_match;
 };
 CURLSH* orderbot::share_handle = NULL;
 #endif
