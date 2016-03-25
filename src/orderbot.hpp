@@ -109,8 +109,13 @@ protected:
 		 cout<<NowDownloaded<<"/"<<TotalToDownload<<endl;
 		 if(NowDownloaded==TotalToDownload)
 		 {
-		 	cout<<m_data<<endl;
+		 	process_content();
 		 }
+	}
+	void process_content()
+	{
+		cout<<m_data<<endl;
+		
 	}
 protected:	
 	std::string m_data;
