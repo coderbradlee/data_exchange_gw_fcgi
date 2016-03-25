@@ -50,6 +50,7 @@ public:
 						{
                            // request->path_match=std::move(sm_res);
                            // write_response(socket, request, res_path.second);
+							cout<<__LINE__<<endl;
 							m_data_parse_callback=res_path.second;
                            // return;
                         }
@@ -143,6 +144,7 @@ protected:
 	}
 	void process_content()
 	{
+		cout<<__LINE__<<endl;
 		//cout<<m_data<<endl;
 		//find right call back
 		if(m_data_parse_callback)
