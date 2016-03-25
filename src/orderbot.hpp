@@ -25,8 +25,8 @@ public:
 	        share_handle = curl_share_init();  
 	        curl_share_setopt(share_handle, CURLSHOPT_SHARE, CURL_LOCK_DATA_DNS);  
 	    }  
-	    curl_easy_setopt(curl_handle, CURLOPT_SHARE, share_handle);  
-	    curl_easy_setopt(curl_handle, CURLOPT_DNS_CACHE_TIMEOUT, 60 * 5); 
+	    curl_easy_setopt(m_curl, CURLOPT_SHARE, share_handle);  
+	    curl_easy_setopt(m_curl, CURLOPT_DNS_CACHE_TIMEOUT, 60 * 5); 
 	}
 	virtual ~orderbot()
 	{
