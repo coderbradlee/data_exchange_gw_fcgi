@@ -111,7 +111,7 @@ protected:
 	}
 	static int close_socket_callback(void *clientp, curl_socket_t item)
 	{
-	 	if (ptr)
+	 	if (clientp)
 		{
 			//cout << __LINE__ << endl;
 			((orderbot*)clientp)->process_content();
