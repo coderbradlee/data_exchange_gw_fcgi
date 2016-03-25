@@ -29,6 +29,27 @@ int main() {
 			boost::timer::cpu_timer pass;
 			pass.start();
 
+			//test
+			
+			const std::tr1::regex pattern("^/admin/orders.json/[[:graph:]]+$");
+
+		   std::string url = "/admin/products.json/?class_type=sales&category_name=Rings";
+
+		   std::smatch result;
+
+		   bool match = std::regex_search(url, result, pattern);
+
+		   if(match)
+		   {
+				for(size_t i = 1; i < result.size(); ++i)
+			    {
+			        std::cout << result[i] << std::endl;
+			    }
+		   }
+		   else
+		   {
+		   	 cout<<__LINE__<<endl;
+		   }
 			//orderbot 接口
 			boost::shared_ptr<orderbot> order=boost::shared_ptr<orderbot>(new orderbot(get_config->m_orderbot_username,get_config->m_orderbot_password,get_config->m_orderbot_url));
 			order->request("GET","/admin/products.json/","class_type=sales&category_name=Rings","");
