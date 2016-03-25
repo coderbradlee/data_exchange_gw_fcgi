@@ -46,8 +46,8 @@ public:
 					{
                         std::smatch sm_res;
                         string temp=path+"?"+param;
-                        cout<<temp<<endl;
-                        cout<<res.first<<endl;
+                        //cout<<temp<<endl;
+                       // cout<<res.first<<endl;
 
                         //cout<<res_path.first<<endl;
 						//cout<<res_path.second<<endl;
@@ -55,7 +55,7 @@ public:
 						{
                            path_match=std::move(sm_res);
                            // write_response(socket, request, res_path.second);
-							cout<<__LINE__<<endl;
+							//cout<<__LINE__<<endl;
 							m_data_parse_callback=res_path.second;
                            // return;
                         }
@@ -177,7 +177,7 @@ protected:
 	         
 
 						ptree pChild = p->second.get_child("inventory_quantities");
-						
+						cout<<"--------------------------"<<endl;
 						for (auto it = pChild.begin(); it != pChild.end(); ++it)
 						{
 							cout<<it->second.get<int>("distribution_center_id")<<endl;
@@ -186,6 +186,7 @@ protected:
 							
 						}
 					}
+					cout<<"=========================="<<endl;
 					//cout<<m_data<<endl;
 					BOOST_LOG_SEV(slg, boost_log->get_log_level()) << __LINE__;
 					boost_log->get_initsink()->flush();
