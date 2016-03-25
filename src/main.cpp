@@ -34,8 +34,7 @@ int main() {
 			order->request("GET","/admin/products.json/","class_type=sales&category_name=Rings","");
 
 			//cout<<order->get_data().length()<<":"<<order->get_data()<<endl;
-				
-		
+
 			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
 		}
 		
