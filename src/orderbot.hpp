@@ -182,7 +182,7 @@ protected:
 						{
 							cout<<it->second.get<int>("distribution_center_id")<<endl;
 							cout<<it->second.get<string>("distribution_center_name")<<endl;
-							cout<<it->second.get<int>("inventory_quantity")<<endl;
+							cout<<it->second.get<double>("inventory_quantity")<<endl;
 							
 						}
 					}
