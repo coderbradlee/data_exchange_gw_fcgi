@@ -109,13 +109,18 @@ protected:
 		 cout<<NowDownloaded<<"/"<<TotalToDownload<<endl;
 		 if(NowDownloaded==TotalToDownload)
 		 {
-		 	process_content();
+		 	if (ptr)
+			{
+				//cout << __LINE__ << endl;
+				((orderbot*)ptr)->process_content();
+			}
+		 	
 		 }
 	}
 	void process_content()
 	{
 		cout<<m_data<<endl;
-		
+
 	}
 protected:	
 	std::string m_data;
