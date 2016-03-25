@@ -31,7 +31,7 @@ int main() {
 
 			//test
 			
-			const std::tr1::regex pattern("^/admin/orders.json/[[:graph:]]+$");
+			const std::regex pattern("^/admin/orders.json/[[:graph:]]+$");
 
 		   std::string url = "/admin/products.json/?class_type=sales&category_name=Rings";
 
