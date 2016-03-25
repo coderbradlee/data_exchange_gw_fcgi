@@ -157,7 +157,7 @@ protected:
 	}
 	void register_callback()
 	{
-		m_resource["^/admin/orders.json/[[:graph:]]+$"]["GET"] = [&]() 
+		m_resource["^/admin/products.json/[[:graph:]]+$"]["GET"] = [&]() 
 			{
 				try 
 				{
