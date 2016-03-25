@@ -49,7 +49,7 @@ public:
                         cout<<temp<<endl;
                         cout<<res.first<<endl;
 
-                        cout<<res_path.first<<endl;
+                        //cout<<res_path.first<<endl;
 						//cout<<res_path.second<<endl;
                         if(std::regex_match(temp, sm_res, res_path.first)) 
 						{
