@@ -165,23 +165,26 @@ protected:
 					ptree pt;
 					std::istringstream content(m_data);
 					read_json(content, pt);
-					cout<<pt.get<int>("product_category_id")<<endl;
-					cout<<pt.get<string>("product_category")<<endl;
-        			cout<<pt.get<int>("product_group_id")<<endl;
-         			cout<<pt.get<string>("product_group")<<endl;
-         			cout<<pt.get<int>("product_id")<<endl;
-        			cout<<pt.get<string>("product_name")<<endl;
-         			cout<<pt.get<string>("sku")<<endl;
-         
-
-					ptree pChild = pt.get_child("inventory_quantities");
-					
-					for (auto it = pChild.begin(); it != pChild.end(); ++it)
+					for (auto p = pt.begin(); p != pt.end(); ++p)
 					{
-						cout<<it->second.get<int>("distribution_center_id")<<endl;
-						cout<<it->second.get<string>("distribution_center_name")<<endl;
-						cout<<it->second.get<int>("inventory_quantity")<<endl;
+						cout<<p->second.get<int>("product_category_id")<<endl;
+						cout<<p->second.get<string>("product_category")<<endl;
+	        			cout<<p->second.get<int>("product_group_id")<<endl;
+	         			cout<<p->second.get<string>("product_group")<<endl;
+	         			cout<<p->second.get<int>("product_id")<<endl;
+	        			cout<<p->second.get<string>("product_name")<<endl;
+	         			cout<<p->second.get<string>("sku")<<endl;
+	         
+
+						ptree pChild = p->second.get_child("inventory_quantities");
 						
+						for (auto it = pChild.begin(); it != pChild.end(); ++it)
+						{
+							cout<<it->second.get<int>("distribution_center_id")<<endl;
+							cout<<it->second.get<string>("distribution_center_name")<<endl;
+							cout<<it->second.get<int>("inventory_quantity")<<endl;
+							
+						}
 					}
 					//cout<<m_data<<endl;
 					BOOST_LOG_SEV(slg, boost_log->get_log_level()) << __LINE__;
