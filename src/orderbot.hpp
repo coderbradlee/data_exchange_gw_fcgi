@@ -162,8 +162,28 @@ protected:
 				try 
 				{
 					//parse m_data and update mysql
-					cout<<m_data<<endl;
-					string body = "test";
+					ptree pt;
+					std::istringstream content(m_data);
+					read_json(content, pt);
+					cout<<pt.get<int>("product_category_id")<<endl;
+					cout<<pt.get<string>("product_category")<<endl;
+        			cout<<pt.get<int>("product_group_id")<<endl;
+         			cout<<pt.get<string>("product_group")<<endl;
+         			cout<<pt.get<int>("product_id")<<endl;
+        			cout<<pt.get<string>("product_name")<<endl;
+         			cout<<pt.get<string>("sku")<<endl;
+         
+
+					ptree pChild = pt.get_child("inventory_quantities");
+					
+					for (auto &p:pChild)
+					{
+						cout<<p.get<int>("distribution_center_id")<<endl;
+						cout<<p.get<string>("distribution_center_name")<<endl;
+						cout<<p.get<int>("inventory_quantity")<<endl;
+						
+					}
+					//cout<<m_data<<endl;
 					BOOST_LOG_SEV(slg, boost_log->get_log_level()) << __LINE__;
 					boost_log->get_initsink()->flush();
 
