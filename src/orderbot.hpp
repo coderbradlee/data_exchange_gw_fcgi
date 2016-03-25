@@ -93,10 +93,10 @@ protected:
 		curl_easy_setopt(m_curl, CURLOPT_TCP_KEEPALIVE, 1L);
 		curl_easy_setopt(m_curl, CURLOPT_CUSTOMREQUEST, method.c_str());
 		
-		curl_easy_setopt(m_curl, CURLOPT_NOPROGRESS,0L);
-		curl_easy_setopt(m_curl, CURLOPT_PROGRESSFUNCTION, progress_callback);
+		//curl_easy_setopt(m_curl, CURLOPT_NOPROGRESS,0L);
+		curl_easy_setopt(m_curl, CURLOPT_CLOSESOCKETFUNCTION, close_socket_callback);
 
-		curl_easy_setopt(m_curl, CURLOPT_PROGRESSDATA,this);
+		curl_easy_setopt(m_curl, CURLOPT_CLOSESOCKETDATA,this);
 		on_request();
 		
 	}
@@ -109,19 +109,14 @@ protected:
 		m_data.clear();
 		return 0 == curl_easy_perform(m_curl);
 	}
-	static int progress_callback(void* ptr, double TotalToDownload, double NowDownloaded, 
-     double TotalToUpload, double NowUploaded)
+	static int close_socket_callback(void *clientp, curl_socket_t item)
 	{
-		 cout<<NowDownloaded<<"/"<<TotalToDownload<<endl;
-		 if(NowDownloaded==TotalToDownload)
-		 {
-		 	if (ptr)
-			{
-				//cout << __LINE__ << endl;
-				((orderbot*)ptr)->process_content();
-			}
-		 	
-		 }
+	 	if (ptr)
+		{
+			//cout << __LINE__ << endl;
+			((orderbot*)clientp)->process_content();
+		}
+
 	}
 	void process_content()
 	{
