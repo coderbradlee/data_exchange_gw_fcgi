@@ -19,8 +19,14 @@ public:
 		curl_easy_setopt(m_curl, CURLOPT_VERBOSE, 1);
 #endif
 		//curl(m_download_url, "GET", filename, true);
-
 		
+	    if (!share_handle)  
+	    {  
+	        share_handle = curl_share_init();  
+	        curl_share_setopt(share_handle, CURLSHOPT_SHARE, CURL_LOCK_DATA_DNS);  
+	    }  
+	    curl_easy_setopt(curl_handle, CURLOPT_SHARE, share_handle);  
+	    curl_easy_setopt(curl_handle, CURLOPT_DNS_CACHE_TIMEOUT, 60 * 5); 
 	}
 	virtual ~orderbot()
 	{
@@ -120,7 +126,6 @@ protected:
 	void process_content()
 	{
 		cout<<m_data<<endl;
-
 	}
 protected:	
 	std::string m_data;
@@ -128,7 +133,8 @@ protected:
 	std::string m_url;
 	std::string m_username;
 	std::string m_password;
+	static CURLSH* share_handle;  
 };
-
+CURLSH* orderbot::share_handle = NULL;
 #endif
 
