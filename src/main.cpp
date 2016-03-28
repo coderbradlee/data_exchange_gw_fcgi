@@ -21,7 +21,7 @@ int main()
 		{
 			//test prepared statement
 			//, , , get_config->m_database.c_str(), get_config->m_port
-			MySql conn(get_config->m_ip.c_str(), get_config->m_username.c_str(), get_config->m_password.c_str(), nullptr);
+			MYSQL conn(get_config->m_ip.c_str(), get_config->m_username.c_str(), get_config->m_password.c_str(), nullptr);
 			
 			string update_sql = "update " + get_config->m_database + "." + get_config->m_table + " set balance=0 where customer_credit_flow_id='JAVVUZJEZK06NI4SL529'";
 			string update_sql2 = "update " + get_config->m_database + "." + get_config->m_table2 + " set credit_balance=0 where customer_master_id='JAVVUZIKIUYDY6PAKCGP'";
