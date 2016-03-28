@@ -62,8 +62,6 @@ public:
 				}
 			}
 		}
-
-
 		curl(path, method, param, content);
 	}
 	string get_data()
