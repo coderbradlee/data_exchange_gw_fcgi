@@ -29,7 +29,8 @@ using namespace decaf::lang;
 using namespace cms;
 using namespace std;
 
-class HelloWorldProducer : public Runnable {
+class HelloWorldProducer// : public Runnable 
+{
 private:
 
     Connection* connection;
@@ -145,8 +146,9 @@ private:
 };
 
 class HelloWorldConsumer : public ExceptionListener,
-                           public MessageListener,
-                           public Runnable {
+                           public MessageListener
+
+{
 
 private:
 
