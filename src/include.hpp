@@ -28,7 +28,7 @@
 #include <boost/archive/iterators/transform_width.hpp>
 //Added for the default_resource example
 #include <fstream>
-#include <boost/asio/yield.hpp>
+//#include <boost/asio/yield.hpp>
 #include <boost/asio/coroutine.hpp>
 
 //#include "mysql/mysql_api.hpp"
