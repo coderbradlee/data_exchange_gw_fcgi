@@ -10,7 +10,11 @@
 #include "credit_ontime.hpp"
 #define BOOST_DATE_TIME_SOURCE
 #include "activemq/activemq.hpp"
-
+using namespace activemq::core;
+using namespace decaf::util::concurrent;
+using namespace decaf::util;
+using namespace decaf::lang;
+using namespace cms;
 using namespace boost::asio;
 using namespace std;
 
