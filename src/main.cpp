@@ -1,8 +1,8 @@
 //#include "include.hpp"
 #include "config.hpp"
-#include "serverResource.hpp"
-#include <boost/asio/yield.hpp>
-#include <boost/asio/coroutine.hpp>
+//#include "serverResource.hpp"
+//#include <boost/asio/yield.hpp>
+//#include <boost/asio/coroutine.hpp>
 
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/any.hpp>
@@ -10,7 +10,6 @@
 #include "credit_ontime.hpp"
 #define BOOST_DATE_TIME_SOURCE
 #include "activemq/activemq.hpp"
-using namespace activemq::core;
 
 //using namespace boost::asio;
 using namespace std;
@@ -76,7 +75,7 @@ int main()
 		    // Note in the code above that this causes createTopic or
 		    // createQueue to be used in both consumer an producer.
 		    //============================================================
-		    bool useTopics = true;
+		    bool useTopics = false;
 		    bool sessionTransacted = false;
 		    int numMessages = 2000;
 
