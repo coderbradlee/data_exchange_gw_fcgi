@@ -98,10 +98,10 @@ public:
             producer->setDeliveryMode(DeliveryMode::NON_PERSISTENT);
 
             // Create the Thread Id String
-            string threadIdStr = Long::toString(decaf::lang::Thread::currentThread()->getId());
+            //string threadIdStr = Long::toString(decaf::lang::Thread::currentThread()->getId());
 
             // Create a messages
-            string text = (string) "Hello world! from thread " + threadIdStr;
+            string text = (string) "Hello world! from thread ";// + threadIdStr;
 
             for (int ix = 0; ix < numMessages; ++ix) {
                 std::auto_ptr<TextMessage> message(session->createTextMessage(text));
