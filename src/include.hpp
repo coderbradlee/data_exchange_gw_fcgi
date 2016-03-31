@@ -18,7 +18,6 @@
 #include <assert.h>
 #include <boost/thread.hpp>
 #include <boost/algorithm/string.hpp>
-#include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/timer/timer.hpp>
@@ -46,5 +45,7 @@
 #define BOOST_DATE_TIME_SOURCE  
 using namespace boost::asio;
 using namespace std;
+using namespace boost::property_tree;
+using namespace boost::posix_time;
 #endif
 
