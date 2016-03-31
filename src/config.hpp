@@ -54,6 +54,9 @@ class iconfig:public boost::enable_shared_from_this<iconfig>, boost::noncopyable
 		string m_orderbot_username;
 		string m_orderbot_password;
 		string m_orderbot_url;	
+		string m_activemq_username;
+		string m_activemq_password;
+		string m_activemq_url;			
 		static boost::mutex m_mu;	
 		static boost::shared_ptr<iconfig> m_ps;
 };
