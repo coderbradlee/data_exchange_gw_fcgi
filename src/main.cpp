@@ -89,25 +89,25 @@ int main()
 		    HelloWorldConsumer consumer(brokerURI, numMessages, useTopics, sessionTransacted);
 
 		    // Start the consumer thread.
-		    Thread consumerThread(&consumer);
-		    consumerThread.start();
+		    //Thread consumerThread(&consumer);
+		   // consumerThread.start();
 
 		    // Wait for the consumer to indicate that its ready to go.
-		    consumer.waitUntilReady();
+		    //consumer.waitUntilReady();
 
 		    // Start the producer thread.
-		    Thread producerThread(&producer);
-		    producerThread.start();
+		    //Thread producerThread(&producer);
+		   // producerThread.start();
 
 		    // Wait for the threads to complete.
-		    producerThread.join();
-		    consumerThread.join();
+		   // producerThread.join();
+		    //consumerThread.join();
 
 		    long long endTime = System::currentTimeMillis();
 		    double totalTime = (double)(endTime - startTime) / 1000.0;
 
-		    consumer.close();
-		    producer.close();
+		   // consumer.close();
+		   // producer.close();
 
 		    std::cout << "Time to completion = " << totalTime << " seconds." << std::endl;
 		    std::cout << "-----------------------------------------------------\n";
