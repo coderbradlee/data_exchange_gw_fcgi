@@ -25,7 +25,7 @@
 using namespace activemq::core;
 using namespace decaf::util::concurrent;
 using namespace decaf::util;
-//using namespace decaf::lang;
+using namespace decaf::lang;
 using namespace cms;
 using namespace std;
 
