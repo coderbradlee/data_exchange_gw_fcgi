@@ -80,7 +80,7 @@ int main()
 		    bool sessionTransacted = false;
 		    int numMessages = 2000;
 
-		    long long startTime = System::currentTimeMillis();
+		    
 
 		    HelloWorldProducer producer(brokerURI, numMessages, useTopics);
 		    HelloWorldConsumer consumer(brokerURI, numMessages, useTopics, sessionTransacted);
@@ -100,14 +100,12 @@ int main()
 		   // producerThread.join();
 		    //consumerThread.join();
 
-		    long long endTime = System::currentTimeMillis();
-		    double totalTime = (double)(endTime - startTime) / 1000.0;
+		    
 
 		   // consumer.close();
 		   // producer.close();
 
-		    std::cout << "Time to completion = " << totalTime << " seconds." << std::endl;
-		    std::cout << "-----------------------------------------------------\n";
+		    
 		    std::cout << "Finished with the example." << std::endl;
 		    std::cout << "=====================================================\n";
 
