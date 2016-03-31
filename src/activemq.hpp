@@ -148,7 +148,7 @@ protected:
 		//find right call back
 		if (m_data_parse_callback)
 		{
-			cout << __LINE__ << endl;
+			//cout << __LINE__ << endl;
 			m_data_parse_callback();
 		}
 
@@ -161,7 +161,7 @@ protected:
 			{
 				//parse m_data and update mysql
 				
-				cout<<m_data<<endl;
+				cout<<__FILE__<<":"<<__LINE__<<":"<<"callback:"<<m_data<<endl;
 				BOOST_LOG_SEV(slg, boost_log->get_log_level()) << __LINE__;
 				boost_log->get_initsink()->flush();
 
