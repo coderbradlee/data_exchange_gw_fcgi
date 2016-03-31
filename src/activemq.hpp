@@ -179,6 +179,30 @@ protected:
 
 			}
 		};
+		m_resource["^/api/message/[[:graph:]]+type=queue&clientId=consumerA$"]["GET"] = [&]()
+		{
+			try
+			{
+				//parse m_data and update mysql
+				
+				cout<<__FILE__<<":"<<__LINE__<<":"<<"callback:"<<m_data<<endl;
+				BOOST_LOG_SEV(slg, boost_log->get_log_level()) << __LINE__;
+				boost_log->get_initsink()->flush();
+
+			}
+			catch (json_parser_error& e)
+			{
+				cout << e.what() << endl;
+			}
+			catch (exception& e)
+			{
+				cout << e.what() << endl;
+			}
+			catch (...)
+			{
+
+			}
+		};
 		copy_opt();
 	}
 	void copy_opt()
