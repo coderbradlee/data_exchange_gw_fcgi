@@ -25,11 +25,11 @@
 using namespace activemq::core;
 using namespace decaf::util::concurrent;
 using namespace decaf::util;
-using namespace decaf::lang;
+//using namespace decaf::lang;
 using namespace cms;
 using namespace std;
 
-class HelloWorldProducer : public Runnable {
+class HelloWorldProducer : public decaf::lang::Runnable {
 private:
 
     Connection* connection;
@@ -146,7 +146,7 @@ private:
 
 class HelloWorldConsumer : public ExceptionListener,
                            public MessageListener,
-                           public Runnable {
+                           public decaf::lang::Runnable {
 
 private:
 
