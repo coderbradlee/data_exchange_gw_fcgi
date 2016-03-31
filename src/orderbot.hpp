@@ -120,6 +120,9 @@ protected:
 		curl_easy_setopt(m_curl, CURLOPT_CLOSESOCKETFUNCTION, close_socket_callback);
 
 		curl_easy_setopt(m_curl, CURLOPT_CLOSESOCKETDATA, this);
+		curl_easy_setopt(m_curl, CURLOPT_POSTFIELDS, content.c_str());
+
+  		curl_easy_setopt(m_curl, CURLOPT_POSTFIELDSIZE_LARGE, (curl_off_t)content.length());
 		on_request();
 
 	}

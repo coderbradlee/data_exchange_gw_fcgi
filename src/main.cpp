@@ -35,7 +35,8 @@ int main()
 
 			//orderbot 接口
 			boost::shared_ptr<activemq> am = boost::shared_ptr<activemq>(new activemq(get_config->m_activemq_username, get_config->m_activemq_password, get_config->m_activemq_url));
-			//am->request("POST", "/api/message/TEST", "type=queue", "body={message:\"test\"}");
+			am->request("POST", "/api/message/TEST", "type=queue", "body={message:\"test\"}");
+			cout<<am->get_data().length()<<":"<<am->get_data()<<endl;
 			am->request("GET", "/api/message/TEST", "type=queue&clientId=consumerA", "");
 			cout<<am->get_data().length()<<":"<<am->get_data()<<endl;
 			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
