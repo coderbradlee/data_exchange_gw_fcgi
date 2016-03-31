@@ -25,7 +25,7 @@
 using namespace activemq::core;
 using namespace decaf::util::concurrent;
 using namespace decaf::util;
-using namespace decaf::lang;
+//using namespace decaf::lang;
 using namespace cms;
 using namespace std;
 
@@ -98,7 +98,7 @@ public:
             producer->setDeliveryMode(DeliveryMode::NON_PERSISTENT);
 
             // Create the Thread Id String
-            string threadIdStr = Long::toString(Thread::currentThread()->getId());
+            string threadIdStr = Long::toString(decaf::lang::Thread::currentThread()->getId());
 
             // Create a messages
             string text = (string) "Hello world! from thread " + threadIdStr;
