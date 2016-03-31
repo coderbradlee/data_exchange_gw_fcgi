@@ -33,7 +33,7 @@ class HelloWorldProducer : public Runnable {
 private:
 
     Connection* connection;
-    Session* session;
+    cms::Session* session;
     Destination* destination;
     MessageProducer* producer;
     int numMessages;
@@ -81,9 +81,9 @@ public:
 
             // Create a Session
             if (this->sessionTransacted) {
-                session = connection->createSession(Session::SESSION_TRANSACTED);
+                session = connection->createSession(cms::Session::SESSION_TRANSACTED);
             } else {
-                session = connection->createSession(Session::AUTO_ACKNOWLEDGE);
+                session = connection->createSession(cms::Session::AUTO_ACKNOWLEDGE);
             }
 
             // Create the destination (Topic or Queue)
@@ -152,7 +152,7 @@ private:
     CountDownLatch latch;
     CountDownLatch doneLatch;
     Connection* connection;
-    Session* session;
+    cms::Session* session;
     Destination* destination;
     MessageConsumer* consumer;
     long waitMillis;
@@ -207,9 +207,9 @@ public:
 
             // Create a Session
             if (this->sessionTransacted == true) {
-                session = connection->createSession(Session::SESSION_TRANSACTED);
+                session = connection->createSession(cms::Session::SESSION_TRANSACTED);
             } else {
-                session = connection->createSession(Session::AUTO_ACKNOWLEDGE);
+                session = connection->createSession(cms::Session::AUTO_ACKNOWLEDGE);
             }
 
             // Create the destination (Topic or Queue)
