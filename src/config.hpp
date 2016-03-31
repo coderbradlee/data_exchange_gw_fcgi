@@ -37,6 +37,9 @@ class iconfig:public boost::enable_shared_from_this<iconfig>, boost::noncopyable
 			m_orderbot_username = m_pt.get<std::string>("orderbot.username");
 			m_orderbot_password = m_pt.get<std::string>("orderbot.password");
 			m_orderbot_url = m_pt.get<std::string>("orderbot.url");	
+			m_activemq_username = m_pt.get<std::string>("activemq.username");
+			m_activemq_password = m_pt.get<std::string>("activemq.password");
+			m_activemq_url = m_pt.get<std::string>("activemq.url");	
 		}
 	public:
 		boost::property_tree::ptree m_pt;

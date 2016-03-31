@@ -14,7 +14,7 @@ int main()
 			boost::timer::cpu_timer pass;
 			pass.start();
 			credit_ontime test;
-			test.start_update();
+			//test.start_update();
 
 			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
 		}
@@ -24,9 +24,20 @@ int main()
 
 			//orderbot 接口
 			boost::shared_ptr<orderbot> order = boost::shared_ptr<orderbot>(new orderbot(get_config->m_orderbot_username, get_config->m_orderbot_password, get_config->m_orderbot_url));
-			order->request("GET", "/admin/products.json/", "class_type=sales&category_name=Rings", "");
+			// order->request("GET", "/admin/products.json/", "class_type=sales&category_name=Rings", "");
 
-			cout<<order->get_data().length()<<":"<<order->get_data()<<endl;
+			// cout<<order->get_data().length()<<":"<<order->get_data()<<endl;
+			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
+		}
+		{
+			boost::timer::cpu_timer pass;
+			pass.start();
+
+			//orderbot 接口
+			boost::shared_ptr<activemq> am = boost::shared_ptr<activemq>(new activemq(get_config->m_activemq_username, get_config->m_activemq_password, get_config->m_activemq_url));
+			am->request("POST", "/api/message/TEST", "type=queue", "");
+
+			cout<<am->get_data().length()<<":"<<am->get_data()<<endl;
 			std::cout << "now time elapsed:" << pass.format(6) << std::endl;
 		}
 
