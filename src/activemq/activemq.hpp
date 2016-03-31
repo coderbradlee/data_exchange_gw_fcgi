@@ -2,7 +2,7 @@
 #define	ACTIVEMQ_HPP
 
 #include <activemq/library/ActiveMQCPP.h>
-#include <decaf/lang/Thread.h>
+//#include <decaf/lang/Thread.h>
 #include <decaf/lang/Runnable.h>
 #include <decaf/util/concurrent/CountDownLatch.h>
 #include <decaf/lang/Integer.h>
