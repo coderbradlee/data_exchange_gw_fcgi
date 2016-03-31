@@ -106,7 +106,8 @@ public:
             for (int ix = 0; ix < numMessages; ++ix) {
                 std::auto_ptr<TextMessage> message(session->createTextMessage(text));
                 message->setIntProperty("Integer", ix);
-                printf("Sent message #%d from thread %s\n", ix + 1, threadIdStr.c_str());
+               // printf("Sent message #%d from thread %s\n", ix + 1, threadIdStr.c_str());
+                printf("Sent message #%d from thread %s\n", ix + 1, "1");
                 producer->send(message.get());
             }
 
