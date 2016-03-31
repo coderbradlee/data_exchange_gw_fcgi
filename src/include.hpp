@@ -44,5 +44,7 @@
 //#include <boost/asio/spawn.hpp>
 #include <boost/asio/ssl.hpp>
 #define BOOST_DATE_TIME_SOURCE  
+using namespace boost::asio;
+using namespace std;
 #endif
 

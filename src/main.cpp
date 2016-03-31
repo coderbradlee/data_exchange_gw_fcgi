@@ -2,8 +2,7 @@
 #include "orderbot.hpp"
 #include "credit_ontime.hpp"
 
-using namespace boost::asio;
-using namespace std;
+
 
 int main()
 {
