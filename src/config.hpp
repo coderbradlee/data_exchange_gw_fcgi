@@ -7,7 +7,7 @@
 #include <iostream>
 #include <map>
 //#define DEBUG
-#include "serverResource.hpp"
+//#include "serverResource.hpp"
 #include "renesolalog.hpp"
 class iconfig:public boost::enable_shared_from_this<iconfig>, boost::noncopyable
 {
