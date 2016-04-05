@@ -7,8 +7,11 @@
 #include <unistd.h>
 #include <sstream>
 #include <unistd.h>
-class fcgi_equest{
+class fcgi_equest
+{
 
+		#define INPUT_BUFFER_SIZE 10000
+		#define MAX_INPUT_MESSAGE_BODY 100000000  //100MB
     public:
         fcgi_equest( FCGX_Request *fastcgi_request )
             :fastcgi_request(fastcgi_request)
