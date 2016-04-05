@@ -6,6 +6,7 @@
 #include "fcgio.h"
 #include <unistd.h>
 #include <sstream>
+#include <unistd.h>
 class fcgi_equest{
 
     public:
