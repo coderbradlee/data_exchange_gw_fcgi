@@ -5,7 +5,7 @@
 //#define DEBUG
 #include "fcgio.h"
 #include <unistd.h>
-
+#include <sstream>
 class fcgi_equest{
 
     public:
