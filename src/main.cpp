@@ -10,9 +10,9 @@ int main()
 	{
 		{
 		 // Backup the stdio streambufs
-		    streambuf * cin_streambuf  = cin.rdbuf();
-		    streambuf * cout_streambuf = cout.rdbuf();
-		    streambuf * cerr_streambuf = cerr.rdbuf();
+		    boost::asio::streambuf * cin_streambuf  = cin.rdbuf();
+		    boost::asio::streambuf * cout_streambuf = cout.rdbuf();
+		    boost::asio::streambuf * cerr_streambuf = cerr.rdbuf();
 
 		    FCGX_Request fastcgi_request;
 
